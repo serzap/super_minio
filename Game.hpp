@@ -2,8 +2,8 @@
 #define GAME_HPP
 
 #include "Graphics.hpp"
-#include "Sprite.hpp"
 #include "Input.hpp"
+#include "Player.hpp"
 
 class Game
 {
@@ -16,7 +16,7 @@ private:
 	void draw(Graphics& graphics);
 	void update(double elapsedTime);
 
-	Sprite mPlayer;
+	Player mPlayer;
 };
 
 #endif 

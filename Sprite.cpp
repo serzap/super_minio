@@ -32,7 +32,7 @@ void Sprite::draw(Graphics& graphics, int x, int y)
 	graphics.drawTexture(mTexture, &mSourceRect, &destRect);
 }
 
-void Sprite::update()
+void Sprite::update(double elapsedTime)
 {
 
 }

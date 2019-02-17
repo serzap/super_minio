@@ -3,7 +3,6 @@
 Graphics::Graphics()
 {
 	SDL_CreateWindowAndRenderer(640, 480, 0, &mWindow, &mRenderer);
-	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
 	SDL_SetWindowTitle(mWindow, "Super Minio");
 }
 

@@ -3,7 +3,7 @@
 namespace
 {
 	const double FPS = 60;
-	const double TIME_PER_FRAME = 1.0 / FPS;
+	const double TIME_PER_FRAME = (1.0 / FPS) * 1000;
 }
 
 Game::Game()
@@ -24,7 +24,7 @@ void Game::gameLoop()
 	Input input;
 	SDL_Event event;
 
-	mPlayer = Sprite(graphics, "hero2.png", "hero", 0, 0, 128, 128, 100, 100);
+	mPlayer = Player(graphics, 100, 100);
 
 	double previous = SDL_GetTicks();
 	double lag = 0.0;
@@ -60,24 +60,37 @@ void Game::gameLoop()
 		{
 			return;
 		}
+		else if (input.isKeyHeld(SDL_SCANCODE_LEFT) == true)
+		{
+			mPlayer.moveLeft();
+		}
+		else if (input.isKeyHeld(SDL_SCANCODE_RIGHT) == true)
+		{
+			mPlayer.moveRight();
+		}
+
+		if (!input.isKeyHeld(SDL_SCANCODE_LEFT) && !input.isKeyHeld(SDL_SCANCODE_RIGHT))
+		{
+			mPlayer.stopMoving();
+		}
 
 		while (lag >= TIME_PER_FRAME)
 		{
 			update(TIME_PER_FRAME);
 			lag -= TIME_PER_FRAME;
+			draw(graphics);
 		}
-		draw(graphics);
 	}
 }
 
 void Game::draw(Graphics& graphics)
 {
 	graphics.clearScreen();
-	mPlayer.draw(graphics, 100, 100);
+	mPlayer.draw(graphics);
 	graphics.updateScreen();
 }
 
 void Game::update(double elapsedTime)
 {
-
+	mPlayer.update(elapsedTime);
 }

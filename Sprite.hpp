@@ -10,10 +10,10 @@ public:
 	Sprite(Graphics & graphics, const std::string& filePath, const std::string& name,
 		int sourceX, int sourceY, int width, int height, double posX, double posY);
 	virtual ~Sprite();
-	virtual void update();
-	void draw(Graphics& graphics, int x, int y);
+	virtual void update(double elapsedTime);
+	virtual void draw(Graphics& graphics, int x, int y);
 
-private:
+protected:
 	SDL_Rect mSourceRect;
 	SDL_Texture* mTexture;
 	double mX, mY;
