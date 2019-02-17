@@ -6,9 +6,9 @@ AnimatedSprite::AnimatedSprite(GameController& gameCtrl)
 {
 }
 
-AnimatedSprite::AnimatedSprite(GameController& gameCtrl, const std::string& filePath, const std::string& name, int sourceX, int sourceY,
+AnimatedSprite::AnimatedSprite(GameController& gameCtrl, const std::string& imageName, int sourceX, int sourceY,
 	int width, int height, int posX, int posY, double timeToUpdate)
-	: Sprite(gameCtrl, filePath, name, sourceX, sourceY, width, height, posX, posY)
+	: Sprite(gameCtrl, imageName, sourceX, sourceY, width, height, posX, posY)
 	, mFrameIndex(0)
 	, mTimeToUpdate(timeToUpdate)
 	, mIsVisible(true)

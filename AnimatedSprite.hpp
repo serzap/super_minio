@@ -8,7 +8,7 @@ class AnimatedSprite : public Sprite
 {
 public:
 	AnimatedSprite(GameController& gameCtrl);
-	AnimatedSprite(GameController& gameCtrl, const std::string& filePath, const std::string& name, int sourceX, int sourceY,
+	AnimatedSprite(GameController& gameCtrl, const std::string& imageName, int sourceX, int sourceY,
 		int width, int height, int posX, int posY, double timeToUpdate);
 	~AnimatedSprite();
 

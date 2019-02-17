@@ -2,6 +2,7 @@
 #define GAME_HPP
 
 #include "Graphics.hpp"
+#include "TextureManager.hpp"
 #include "Input.hpp"
 #include "Player.hpp"
 
@@ -13,6 +14,7 @@ public:
 
 	Input& getInput();
 	Graphics& getGraphics();
+	TextureManager& getTextureManager();
 	Player& getPlayer();
 
 private:
@@ -21,6 +23,7 @@ private:
 	void update(double elapsedTime);
 
 	Graphics mGraphics;
+	TextureManager mTextureManager;
 	Input mInput;
 	Player mPlayer;
 };
@@ -33,6 +36,11 @@ inline Input& GameController::getInput()
 inline Graphics& GameController::getGraphics()
 {
 	return mGraphics;
+}
+
+inline TextureManager& GameController::getTextureManager()
+{
+	return mTextureManager;
 }
 
 inline Player& GameController::getPlayer()

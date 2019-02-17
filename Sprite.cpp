@@ -7,7 +7,7 @@ Sprite::Sprite(GameController& gameCtrl)
 
 }
 
-Sprite::Sprite(GameController& gameCtrl, const std::string& filePath, const std::string& name,
+Sprite::Sprite(GameController& gameCtrl, const std::string& imageName,
 	int sourceX, int sourceY, int width, int height, int posX, int posY)
 	: mGameCtrl(gameCtrl)
 	, mX(posX)
@@ -18,10 +18,7 @@ Sprite::Sprite(GameController& gameCtrl, const std::string& filePath, const std:
 	mSourceRect.w = width;
 	mSourceRect.h = height;
 
-	//TODO: make texture manager and merge image and texture
-	mGameCtrl.getGraphics().loadImage(filePath, name);
-	SDL_Surface* surface = mGameCtrl.getGraphics().getImageByName(name);
-	mTexture = SDL_CreateTextureFromSurface(mGameCtrl.getGraphics().getRenderer(), surface);
+	mTexture = mGameCtrl.getTextureManager().createTextureFromImage(imageName);
 }
 
 Sprite::~Sprite()

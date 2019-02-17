@@ -7,12 +7,11 @@ namespace PLAYER_CONSTANTS
 }
 
 Player::Player(GameController& gameCtrl)
-	: AnimatedSprite(gameCtrl, "test_sprite_sheet.png", "hero", 0, 0, 16, 16, 100, 100, 100)
+	: AnimatedSprite(gameCtrl, "main_char", 0, 0, 16, 16, 100, 100, 100)
 	, mDx(0.0)
 	, mDy(0.0)
 	, mDir(GameHelper::RIGHT)
 {
-	mGameCtrl.getGraphics().loadImage("test_sprite_sheet.png", "hero");
 	setupAnimations();
 	playAnimation("IdleRight");
 }

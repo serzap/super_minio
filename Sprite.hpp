@@ -8,7 +8,7 @@ class Sprite
 {
 public:
 	Sprite(GameController& gameCtrl);
-	Sprite(GameController& gameCtrl, const std::string& filePath, const std::string& name,
+	Sprite(GameController& gameCtrl, const std::string& imageName,
 		int sourceX, int sourceY, int width, int height, int posX, int posY);
 	virtual ~Sprite();
 	virtual void update(double elapsedTime);

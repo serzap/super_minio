@@ -5,6 +5,7 @@ using namespace GameHelper;
 GameController::GameController()
 	: mInput(*this)
 	, mGraphics(*this)
+	, mTextureManager(*this)
 	, mPlayer(*this)
 {
 	gameLoop();

@@ -14,8 +14,6 @@ public:
 	Graphics(GameController& gameCtrl);
 	~Graphics();
 
-	void loadImage(const std::string & filePath, const std::string& imageName);
-	SDL_Surface* getImageByName(const std::string& name);
 	void drawTexture(SDL_Texture* texture, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle);
 	void updateScreen();
 	void clearScreen();
@@ -25,10 +23,6 @@ private:
 	GameController& mGameCtrl;
 	SDL_Window* mWindow;
 	SDL_Renderer* mRenderer;
-
-	std::map<std::string, SDL_Surface*> mImageList;
-
-	bool isImageInList(const std::string & name);
 };
 
 inline SDL_Renderer* Graphics::getRenderer() const
