@@ -1,24 +1,20 @@
 #include "Player.hpp"
+#include "GameController.hpp"
 
 namespace PLAYER_CONSTANTS
 {
 	const double WALK_SPEED = 0.2;
 }
 
-Player::Player()
-{
-
-}
-
-Player::Player(Graphics& graphics, double x, double y)
-	: AnimatedSprite(graphics, "test_sprite_sheet.png", "hero", 0, 0, 16, 16, x, y, 100)
+Player::Player(GameController& gameCtrl)
+	: AnimatedSprite(gameCtrl, "test_sprite_sheet.png", "hero", 0, 0, 16, 16, 100, 100, 100)
 	, mDx(0.0)
 	, mDy(0.0)
-	, mDir(GAME_HELPER::RIGHT)
+	, mDir(GameHelper::RIGHT)
 {
-	graphics.loadImage("test_sprite_sheet.png", "hero");
+	mGameCtrl.getGraphics().loadImage("test_sprite_sheet.png", "hero");
 	setupAnimations();
-	playAnimation("RunRight");
+	playAnimation("IdleRight");
 }
 
 Player::~Player()
@@ -43,28 +39,28 @@ void Player::moveLeft()
 {
 	mDx = -PLAYER_CONSTANTS::WALK_SPEED;
 	playAnimation("RunLeft");
-	mDir = GAME_HELPER::LEFT;
+	mDir = GameHelper::LEFT;
 }
 
 void Player::moveRight()
 {
 	mDx = PLAYER_CONSTANTS::WALK_SPEED;
 	playAnimation("RunRight");
-	mDir = GAME_HELPER::RIGHT;
+	mDir = GameHelper::RIGHT;
 }
 
 void Player::stopMoving()
 {
 	mDx = 0.0;
-	playAnimation(mDir == GAME_HELPER::RIGHT ? "IdleRight" : "IdleLeft");
+	playAnimation(mDir == GameHelper::RIGHT ? "IdleRight" : "IdleLeft");
 }
 void Player::update(double elapsedTime)
 {
-	mX += mDx * elapsedTime;
+	mX += static_cast<int>(mDx * elapsedTime);
 	AnimatedSprite::update(elapsedTime);
 }
 
-void Player::draw(Graphics& graphics)
+void Player::draw()
 {
-	AnimatedSprite::draw(graphics, mX, mY);
+	AnimatedSprite::draw();
 }

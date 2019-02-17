@@ -7,13 +7,13 @@
 class AnimatedSprite : public Sprite
 {
 public:
-	AnimatedSprite();
-	AnimatedSprite(Graphics& graphics, const std::string& filePath, const std::string& name, int sourceX, int sourceY,
-		int width, int height, double posX, double posY, double timeToUpdate);
+	AnimatedSprite(GameController& gameCtrl);
+	AnimatedSprite(GameController& gameCtrl, const std::string& filePath, const std::string& name, int sourceX, int sourceY,
+		int width, int height, int posX, int posY, double timeToUpdate);
 	~AnimatedSprite();
 
 	void update(double elapsedTime) override;
-	void draw(Graphics& graphics, int x, int y) override;
+	void draw() override;
 
 protected:
 	double mTimeToUpdate;

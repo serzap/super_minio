@@ -1,13 +1,16 @@
 #include "Sprite.hpp"
+#include "GameController.hpp"
 
-Sprite::Sprite()
+Sprite::Sprite(GameController& gameCtrl)
+	: mGameCtrl(gameCtrl)
 {
 
 }
 
-Sprite::Sprite(Graphics & graphics, const std::string& filePath, const std::string& name,
-	int sourceX, int sourceY, int width, int height, double posX, double posY)
-	: mX(posX)
+Sprite::Sprite(GameController& gameCtrl, const std::string& filePath, const std::string& name,
+	int sourceX, int sourceY, int width, int height, int posX, int posY)
+	: mGameCtrl(gameCtrl)
+	, mX(posX)
 	, mY(posY)
 {
 	mSourceRect.x = sourceX;
@@ -16,9 +19,9 @@ Sprite::Sprite(Graphics & graphics, const std::string& filePath, const std::stri
 	mSourceRect.h = height;
 
 	//TODO: make texture manager and merge image and texture
-	graphics.loadImage(filePath, name);
-	SDL_Surface* surface = graphics.getImageByName(name);
-	mTexture = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
+	mGameCtrl.getGraphics().loadImage(filePath, name);
+	SDL_Surface* surface = mGameCtrl.getGraphics().getImageByName(name);
+	mTexture = SDL_CreateTextureFromSurface(mGameCtrl.getGraphics().getRenderer(), surface);
 }
 
 Sprite::~Sprite()
@@ -26,10 +29,10 @@ Sprite::~Sprite()
 
 }
 
-void Sprite::draw(Graphics& graphics, int x, int y)
+void Sprite::draw()
 {
-	SDL_Rect destRect = { x, y, mSourceRect.w, mSourceRect.h };
-	graphics.drawTexture(mTexture, &mSourceRect, &destRect);
+	SDL_Rect destRect = { mX, mY, mSourceRect.w, mSourceRect.h };
+	mGameCtrl.getGraphics().drawTexture(mTexture, &mSourceRect, &destRect);
 }
 
 void Sprite::update(double elapsedTime)

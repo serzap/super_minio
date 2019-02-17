@@ -3,21 +3,22 @@
 
 #include "Graphics.hpp"
 
+class GameController;
 class Sprite
 {
 public:
-	Sprite();
-	Sprite(Graphics & graphics, const std::string& filePath, const std::string& name,
-		int sourceX, int sourceY, int width, int height, double posX, double posY);
+	Sprite(GameController& gameCtrl);
+	Sprite(GameController& gameCtrl, const std::string& filePath, const std::string& name,
+		int sourceX, int sourceY, int width, int height, int posX, int posY);
 	virtual ~Sprite();
 	virtual void update(double elapsedTime);
-	virtual void draw(Graphics& graphics, int x, int y);
+	virtual void draw();
 
 protected:
+	GameController& mGameCtrl;
 	SDL_Rect mSourceRect;
 	SDL_Texture* mTexture;
-	double mX, mY;
-
+	int mX, mY;
 };
 
 #endif

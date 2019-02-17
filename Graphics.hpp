@@ -7,10 +7,11 @@
 #include <string>
 #include <iostream>
 
+class GameController;
 class Graphics
 {
 public:
-	Graphics();
+	Graphics(GameController& gameCtrl);
 	~Graphics();
 
 	void loadImage(const std::string & filePath, const std::string& imageName);
@@ -21,6 +22,7 @@ public:
 
 	SDL_Renderer* getRenderer() const;
 private:
+	GameController& mGameCtrl;
 	SDL_Window* mWindow;
 	SDL_Renderer* mRenderer;
 

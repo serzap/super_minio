@@ -1,4 +1,16 @@
 #include "Input.hpp"
+#include "GameController.hpp"
+
+Input::Input(GameController& gameCtrl)
+	:mGameCtrl(gameCtrl)
+{
+
+}
+
+Input::~Input()
+{
+
+}
 
 void Input::beginNewFrame()
 {

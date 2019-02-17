@@ -1,10 +1,14 @@
 #include "AnimatedSprite.hpp"
+#include "GameController.hpp"
 
-AnimatedSprite::AnimatedSprite() {}
+AnimatedSprite::AnimatedSprite(GameController& gameCtrl)
+: Sprite(gameCtrl)
+{
+}
 
-AnimatedSprite::AnimatedSprite(Graphics& graphics, const std::string& filePath, const std::string& name, int sourceX, int sourceY,
-	int width, int height, double posX, double posY, double timeToUpdate)
-	: Sprite(graphics, filePath, name, sourceX, sourceY, width, height, posX, posY)
+AnimatedSprite::AnimatedSprite(GameController& gameCtrl, const std::string& filePath, const std::string& name, int sourceX, int sourceY,
+	int width, int height, int posX, int posY, double timeToUpdate)
+	: Sprite(gameCtrl, filePath, name, sourceX, sourceY, width, height, posX, posY)
 	, mFrameIndex(0)
 	, mTimeToUpdate(timeToUpdate)
 	, mIsVisible(true)
@@ -81,27 +85,17 @@ void AnimatedSprite::update(double elapsedTime)
 	}
 }
 
-void AnimatedSprite::draw(Graphics& graphics, int x, int y)
+void AnimatedSprite::draw()
 {
 	if (mIsVisible)
 	{
 		SDL_Rect destRect;
-		destRect.x = x + mOffsets[mCurrentAnimation].first;
-		destRect.y = y + mOffsets[mCurrentAnimation].second;
+		destRect.x = mX + mOffsets[mCurrentAnimation].first;
+		destRect.y = mY + mOffsets[mCurrentAnimation].second;
 		destRect.w = mSourceRect.w * 2;
 		destRect.h = mSourceRect.h * 2;
 
 		SDL_Rect sourceRect = mAnimations[mCurrentAnimation][mFrameIndex];
-		graphics.drawTexture(mTexture, &sourceRect, &destRect);
+		mGameCtrl.getGraphics().drawTexture(mTexture, &sourceRect, &destRect);
 	}
-}
-
-void AnimatedSprite::animationDone(std::string currentAnimation)
-{
-
-}
-
-void AnimatedSprite::setupAnimations()
-{
-	addAnimation(3, 0, 0, "RunLeft", 16, 16, std::make_pair(0,0));
 }

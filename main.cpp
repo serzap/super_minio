@@ -1,9 +1,10 @@
 #define SDL_MAIN_HANDLED
-#include "Game.hpp"
+#include "GameController.hpp"
 
 int main()
 {
 	SDL_SetMainReady();
-	Game game;
+	SDL_Init(SDL_INIT_EVERYTHING);
+	GameController game;
 	return 0;
 }
