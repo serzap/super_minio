@@ -37,6 +37,7 @@ void TextureManager::loadAllImages()
 {
 	//player image
 	loadImage("test_main_char_sheet.png", "main_char");
+	loadImage("test_background_tileset.png", "background");
 }
 
 SDL_Surface* TextureManager::getImageByName(const std::string & name)

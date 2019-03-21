@@ -5,6 +5,7 @@
 #include "TextureManager.hpp"
 #include "Input.hpp"
 #include "Player.hpp"
+#include "Level.hpp"
 
 class GameController
 {
@@ -16,6 +17,7 @@ public:
 	Graphics& getGraphics();
 	TextureManager& getTextureManager();
 	Player& getPlayer();
+	Level& getLevel();
 
 private:
 	void gameLoop();
@@ -26,6 +28,7 @@ private:
 	TextureManager mTextureManager;
 	Input mInput;
 	Player mPlayer;
+	Level mLevel;
 };
 
 inline Input& GameController::getInput()
@@ -47,4 +50,10 @@ inline Player& GameController::getPlayer()
 {
 	return mPlayer;
 }
+
+inline Level& GameController::getLevel()
+{
+	return mLevel;
+}
+
 #endif 

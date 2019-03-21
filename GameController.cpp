@@ -7,6 +7,7 @@ GameController::GameController()
 	, mGraphics(*this)
 	, mTextureManager(*this)
 	, mPlayer(*this)
+	, mLevel(*this, "map1", std::make_pair(100,100))
 {
 	gameLoop();
 }
@@ -79,11 +80,13 @@ void GameController::gameLoop()
 void GameController::draw()
 {
 	mGraphics.clearScreen();
+	mLevel.draw();
 	mPlayer.draw();
 	mGraphics.updateScreen();
 }
 
 void GameController::update(double elapsedTime)
 {
+	mLevel.update(elapsedTime);
 	mPlayer.update(elapsedTime);
 }
