@@ -4,6 +4,8 @@
 #include "AnimatedSprite.hpp"
 #include "GameHelper.hpp"
 
+using namespace GameHelper;
+
 class Player : public AnimatedSprite
 {
 public:
@@ -24,7 +26,7 @@ protected:
 
 private:
 	double mDx, mDy;
-	GameHelper::Direction mDir;
+	Direction mDir;
 };
 
 #endif 

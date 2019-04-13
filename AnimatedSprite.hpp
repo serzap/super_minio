@@ -2,7 +2,10 @@
 #define ANIMATED_SPRITE_HPP
 
 #include "Sprite.hpp"
+#include "GameHelper.hpp"
 #include <vector>
+
+using namespace GameHelper;
 
 class AnimatedSprite : public Sprite
 {
@@ -20,7 +23,7 @@ protected:
 	bool mCurrentAnimationOnce;
 	std::string mCurrentAnimation;
 
-	void addAnimation(int frames, int x, int y, const std::string& name, int width, int height, std::pair<int, int> offset);
+	void addAnimation(int frames, int x, int y, const std::string& name, int width, int height, Vector2D offset);
 	void resetAnimations();
 	void stopAnimation();
 	void setVisible(bool visible);
@@ -30,7 +33,7 @@ protected:
 
 private:
 	std::map<std::string, std::vector<SDL_Rect>> mAnimations;
-	std::map<std::string, std::pair<int, int>> mOffsets;
+	std::map<std::string, Vector2D> mOffsets;
 
 	int mFrameIndex;
 	double mTimeElapsed;

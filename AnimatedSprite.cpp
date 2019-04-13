@@ -24,7 +24,7 @@ AnimatedSprite::~AnimatedSprite()
 
 }
 
-void AnimatedSprite::addAnimation(int frames, int x, int y, const std::string& name, int width, int height, std::pair<int, int> offset)
+void AnimatedSprite::addAnimation(int frames, int x, int y, const std::string& name, int width, int height, Vector2D offset)
 {
 	std::vector<SDL_Rect> rectangles;
 	for (int i = 0; i < frames; ++i)
@@ -32,8 +32,8 @@ void AnimatedSprite::addAnimation(int frames, int x, int y, const std::string& n
 		SDL_Rect newRect = { (i + x) * width, y, width, height };
 		rectangles.push_back(newRect);
 	}
-	mAnimations.insert(std::pair<std::string, std::vector<SDL_Rect>>(name, rectangles));
-	mOffsets.insert(std::pair<std::string,	std::pair<int, int>>(name, offset));
+	mAnimations.insert(std::make_pair(name, rectangles));
+	mOffsets.insert(std::make_pair(name, offset));
 }
 
 void AnimatedSprite::resetAnimations()
@@ -90,8 +90,8 @@ void AnimatedSprite::draw()
 	if (mIsVisible)
 	{
 		SDL_Rect destRect;
-		destRect.x = mX + mOffsets[mCurrentAnimation].first;
-		destRect.y = mY + mOffsets[mCurrentAnimation].second;
+		destRect.x = mX + mOffsets[mCurrentAnimation].x;
+		destRect.y = mY + mOffsets[mCurrentAnimation].y;
 		destRect.w = mSourceRect.w * 2;
 		destRect.h = mSourceRect.h * 2;
 

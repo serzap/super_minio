@@ -4,7 +4,7 @@
 Graphics::Graphics(GameController& gameCtrl)
 	:mGameCtrl(gameCtrl)
 {
-	SDL_CreateWindowAndRenderer(640, 480, 0, &mWindow, &mRenderer);
+	SDL_CreateWindowAndRenderer(640, 512, 0, &mWindow, &mRenderer);
 	SDL_SetWindowTitle(mWindow, "Super Minio");
 }
 

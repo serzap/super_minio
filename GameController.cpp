@@ -7,7 +7,7 @@ GameController::GameController()
 	, mGraphics(*this)
 	, mTextureManager(*this)
 	, mPlayer(*this)
-	, mLevel(*this, "map1", std::make_pair(100,100))
+	, mLevel(*this, "testMap", {100, 100})
 {
 	gameLoop();
 }

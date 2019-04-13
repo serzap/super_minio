@@ -23,10 +23,10 @@ Player::~Player()
 
 void Player::setupAnimations()
 {
-	addAnimation(1, 0, 0, "IdleLeft", 16, 16, std::make_pair(0, 0));
-	addAnimation(1, 0, 16, "IdleRight", 16, 16, std::make_pair(0, 0));
-	addAnimation(3, 0, 0, "RunLeft", 16, 16, std::make_pair(0, 0));
-	addAnimation(3, 0, 16, "RunRight", 16, 16, std::make_pair(0, 0));
+	addAnimation(1, 0, 0, "IdleLeft", 16, 16, { 0, 0 });
+	addAnimation(1, 0, 16, "IdleRight", 16, 16, { 0, 0 });
+	addAnimation(3, 0, 0, "RunLeft", 16, 16, { 0, 0 });
+	addAnimation(3, 0, 16, "RunRight", 16, 16, { 0, 0 });
 }
 
 void Player::animationDone(std::string currentAnimation)

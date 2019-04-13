@@ -16,9 +16,9 @@ public:
 
 	void loadAllImages();
 	SDL_Texture* createTextureFromImage(const std::string imageName);
+	void loadImage(const std::string & filePath, const std::string& imageName);
 
 private:
-	void loadImage(const std::string & filePath, const std::string& imageName);
 	SDL_Surface* getImageByName(const std::string& name);
 	bool isImageInList(const std::string & name);
 
